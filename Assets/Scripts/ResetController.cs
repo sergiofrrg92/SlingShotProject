@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ResetController : MonoBehaviour
 {
@@ -19,9 +20,7 @@ public class ResetController : MonoBehaviour
 
     private void OnMouseUp()
     {
-        Debug.Log("ResetControllerOnMouseUp");
-        square.transform.position = originalPos;
-        square.GetComponent<Rigidbody2D>().gravityScale = 0;
-        square.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+       
+        SceneManager.LoadScene("SampleScene");
     }
 }
