@@ -32,6 +32,9 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Live pos X: " + System.Math.Floor(currentLevel.GetComponentInChildren<Camera>().WorldToViewportPoint(square.transform.position).x));
+        Debug.Log("Live pos Y: " + System.Math.Floor(currentLevel.GetComponentInChildren<Camera>().WorldToViewportPoint(square.transform.position).y));
+        //Debug.Log("Current: " + currentViewPortX);
         if((System.Math.Floor(currentLevel.GetComponentInChildren<Camera>().WorldToViewportPoint(square.transform.position).x) == currentViewPortX + 1) && currentLevel.HasRightLevel())
         {
             Level previousLevel = currentLevel;
@@ -41,8 +44,30 @@ public class LevelController : MonoBehaviour
 
         }
 
-        if (System.Math.Floor(currentLevel.GetComponentInChildren<Camera>().WorldToViewportPoint(square.transform.position).y) == currentViewPortX + 1 && currentLevel.HasLeftLevel())
+        if ((System.Math.Floor(currentLevel.GetComponentInChildren<Camera>().WorldToViewportPoint(square.transform.position).x) == currentViewPortX - 1) && currentLevel.HasLeftLevel())
         {
+            Level previousLevel = currentLevel;
+            currentLevel = currentLevel.leftLevel;
+            currentLevel.GetComponentInChildren<Camera>().enabled = true;
+            previousLevel.GetComponentInChildren<Camera>().enabled = false;
+
+        }
+
+        if ((System.Math.Floor(currentLevel.GetComponentInChildren<Camera>().WorldToViewportPoint(square.transform.position).y) == currentViewPortY + 1) && currentLevel.HasTopLevel())
+        {
+            Level previousLevel = currentLevel;
+            currentLevel = currentLevel.topLevel;
+            currentLevel.GetComponentInChildren<Camera>().enabled = true;
+            previousLevel.GetComponentInChildren<Camera>().enabled = false;
+
+        }
+
+        if ((System.Math.Floor(currentLevel.GetComponentInChildren<Camera>().WorldToViewportPoint(square.transform.position).y) == currentViewPortY + 1) && currentLevel.HasBottomLevel())
+        {
+            Level previousLevel = currentLevel;
+            currentLevel = currentLevel.bottomLevel;
+            currentLevel.GetComponentInChildren<Camera>().enabled = true;
+            previousLevel.GetComponentInChildren<Camera>().enabled = false;
 
         }
 
