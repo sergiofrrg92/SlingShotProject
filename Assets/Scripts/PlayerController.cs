@@ -20,7 +20,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
         void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            PushPlayer();
+        }
     }
 
     private Vector3 getMouseWorldPosition()
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     }*/
 
-    private void OnMouseDown()
+    private void PushPlayer()
     {
         Vector3 mousePosition = getMouseWorldPosition();
         Debug.Log("Mouse Position: " + mousePosition);
