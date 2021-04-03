@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         return screenToWorldPoint;
     }
 
-    private void OnMouseDrag()
+    /*private void OnMouseDrag()
     {
         Vector3 mousePosition = getMouseWorldPosition();
         Debug.Log("Mouse Position: " + mousePosition);
@@ -54,7 +54,24 @@ public class PlayerController : MonoBehaviour
         body.gravityScale = 1f;
         body.AddRelativeForce(new Vector2(originalPosition.x - transform.position.x, originalPosition.y - transform.position.y) * forceImpulse, ForceMode2D.Impulse);
 
+    }*/
+
+    private void OnMouseDown()
+    {
+        Vector3 mousePosition = getMouseWorldPosition();
+        Debug.Log("Mouse Position: " + mousePosition);
+        Vector3 pushVector = Vector3.Normalize(new Vector3(transform.position.x - mousePosition.x, transform.position.y - mousePosition.y));
+        if(pushVector.y < 0)
+        {
+            pushVector.y *= -1;
+        }
+        if(body.gravityScale != 1f)
+        {
+            body.gravityScale = 1f;
+        }
+        
+        body.AddRelativeForce(pushVector * forceImpulse, ForceMode2D.Impulse);
     }
 
-    
+
 }
