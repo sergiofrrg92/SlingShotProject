@@ -62,7 +62,7 @@ public class LevelController : MonoBehaviour
 
         }
 
-        if ((System.Math.Floor(currentLevel.GetComponentInChildren<Camera>().WorldToViewportPoint(square.transform.position).y) == currentViewPortY + 1) && currentLevel.HasBottomLevel())
+        if ((System.Math.Floor(currentLevel.GetComponentInChildren<Camera>().WorldToViewportPoint(square.transform.position).y) == currentViewPortY - 1) && currentLevel.HasBottomLevel())
         {
             Level previousLevel = currentLevel;
             currentLevel = currentLevel.bottomLevel;
