@@ -35,30 +35,6 @@ public class PlayerController : MonoBehaviour
         return screenToWorldPoint;
     }
 
-    /*private void OnMouseDrag()
-    {
-        Vector3 mousePosition = getMouseWorldPosition();
-        Debug.Log("Mouse Position: " + mousePosition);
-        Debug.Log("OriginalPos: " + originalPosition);
-        float distance = Vector3.Distance(mousePosition, originalPosition);
-
-        transform.position = Vector3.MoveTowards(originalPosition, mousePosition, maxDistance);
-
-        Debug.Log("Distance: " + distance);
-        Debug.Log("--------------");
-        
-
-    }
-
-    private void OnMouseUp()
-    {
-        Vector3 force = originalPosition;
-        //transform.position = Vector3.MoveTowards(transform.position, originalPosition, maxDistance);
-        body.gravityScale = 1f;
-        body.AddRelativeForce(new Vector2(originalPosition.x - transform.position.x, originalPosition.y - transform.position.y) * forceImpulse, ForceMode2D.Impulse);
-
-    }*/
-
     private void PushPlayer()
     {
         Vector3 mousePosition = getMouseWorldPosition();
